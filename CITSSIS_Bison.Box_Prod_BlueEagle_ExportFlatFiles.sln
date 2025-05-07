@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34601.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "CITSSIS_Bison.Box_Prod_BlueEagle_ExportFlatFiles", "CITSSIS_Bison.Box_Prod_BlueEagle_ExportFlatFiles\CITSSIS_Bison.Box_Prod_BlueEagle_ExportFlatFiles.dtproj", "{06E4836C-3414-4DBA-AB95-23B1A9A9D54B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06E4836C-3414-4DBA-AB95-23B1A9A9D54B}.Development|Default.ActiveCfg = Development
+		{06E4836C-3414-4DBA-AB95-23B1A9A9D54B}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20138CB4-8C9B-4AD6-B4B9-62D66739E5AF}
+	EndGlobalSection
+EndGlobal

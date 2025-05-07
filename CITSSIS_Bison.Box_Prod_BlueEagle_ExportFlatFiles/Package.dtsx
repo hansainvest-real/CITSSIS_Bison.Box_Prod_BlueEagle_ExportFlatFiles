@@ -1,0 +1,320 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/24/2022 4:47:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HSHAMSV10"
+  DTS:CreatorName="DATACENTER\adm-controlit2"
+  DTS:DTSID="{56DD559E-D2F2-47D9-A630-DDB30E2B7176}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{C0526AC0-422B-4759-AE44-72EB9D6DF991}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;BISDSYSDB&quot;;&quot;[dbo].[SSISConfigurations]&quot;;&quot;ALL&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{0EE608B7-5EE6-43CA-84D7-31C10174270C}"
+      DTS:ObjectName="ALL" />
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;BISDSYSDB&quot;;&quot;[dbo].[SSISConfigurations]&quot;;&quot;BIS_ExportFlatfiles&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{060B0217-68AD-41EC-85EC-6713C4F15800}"
+      DTS:ObjectName="BIS_ExportFlatfiles" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{783DCBD0-FCD5-45A3-8620-1A35EB39AAD7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgColSeparator">
+      <DTS:VariableValue
+        DTS:DataType="8">|</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6B385956-1F33-4AAC-9296-BF0CD141485C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgExcludeHeader">
+      <DTS:VariableValue
+        DTS:DataType="8">1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3A668F1C-A65D-4AEC-A73E-9E812BBDB1C4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgExportID">
+      <DTS:VariableValue
+        DTS:DataType="8">90000016</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{266C07C9-BA26-4F75-AE6E-6A500DEA645C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgFileExtension">
+      <DTS:VariableValue
+        DTS:DataType="8">.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FF8E4EB4-5253-45B1-A2D2-AE9CA77B6D9A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgPathOutput">
+      <DTS:VariableValue
+        DTS:DataType="8">\\dbp332004\BISSQL\DATA\Interface\Export\Hansainvest</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E28114C4-AB02-47F6-AE42-DE509FAA8518}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgPathProg">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{990D26C6-6EEE-4CC9-8497-9FCB57986613}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgPathSQLScripts">
+      <DTS:VariableValue
+        DTS:DataType="8">\\dbp332004\BISSQL\DATA\Interface\Data\HIAM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{071FF72B-B08E-4DBF-A7C4-759775A382DC}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgPeriod">
+      <DTS:VariableValue
+        DTS:DataType="8">202411</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{620F568C-3E74-439F-B838-6A02E834E29E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;-S &quot;+ @[$Project::parServerName] +&quot; -d BISimportDB -E -W -s \&quot;&quot;+ @[User::cfgColSeparator] +&quot;\&quot; -i &quot;+ @[User::cfgPathSQLScripts] +&quot;\\&quot;+ @[User::varFileName] +&quot;.sql -o &quot;+ @[User::cfgPathOutput] +&quot;\\&quot; + @[User::varTimeStamp] + &quot;_&quot; +  @[User::cfgExportID] + &quot;_&quot; + @[User::varPeriod] + &quot;_&quot; + @[User::varFileName] +  @[User::cfgFileExtension] &#xA;+ (@[User::cfgExcludeHeader] == &quot;1&quot; ? &quot; -h -1&quot; : &quot;&quot;)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varArgumentsProg">
+      <DTS:VariableValue
+        DTS:DataType="8">-S DBP332004,54364 -d BISimportDB -E -W -s "|" -i \\dbp332004\BISSQL\DATA\Interface\Data\HIAM\.sql -o \\dbp332004\BISSQL\DATA\Interface\Export\Hansainvest\_90000016_202411_.csv -h -1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1287BFE8-14E0-4623-8F4C-D79F15E1C223}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varError">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A36A226F-B1FE-4BF3-9DA5-75AB4F9C04BA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varFileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F0AFC075-822A-48A1-98F4-994BC42C2987}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::cfgPeriod]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varPeriod">
+      <DTS:VariableValue
+        DTS:DataType="8">202411</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{61186B43-D75D-4438-8657-028798F882CE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varTimeStamp">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach-Schleifencontainer"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach-Schleifencontainer"
+      DTS:DTSID="{FD51EAD1-0F71-43C4-8AAB-71E5464BD297}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach-Schleifencontainer">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{591B83EC-1597-4D23-A4DD-51D17DC33010}"
+        DTS:ObjectName="{591B83EC-1597-4D23-A4DD-51D17DC33010}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[User::cfgPathSQLScripts]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="\\dbp332004\BISSQL\DATA\Interface\Data\HIAM" />
+            <FEFEProperty
+              FileSpec="*.sql" />
+            <FEFEProperty
+              FileNameRetrievalType="2" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach-Schleifencontainer\create export-files"
+          DTS:CreationName="Microsoft.ExecuteProcess"
+          DTS:Description="Task &quot;Prozess ausführen&quot;"
+          DTS:DTSID="{A78504AB-C98C-471B-8DFE-CE8476AE4E55}"
+          DTS:ExecutableType="Microsoft.ExecuteProcess"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="create export-files"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="Arguments">@[User::varArgumentsProg]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="WorkingDirectory">@[User::cfgPathProg]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <ExecuteProcessData
+              Executable="SQLCMD.exe"
+              Arguments="-S DBP332004,54364 -d BISimportDB -E -W -s &quot;|&quot; -i \\dbp332004\BISSQL\DATA\Interface\Data\HIAM\.sql -o \\dbp332004\BISSQL\DATA\Interface\Export\Hansainvest\_90000016_202411_.csv -h -1"
+              WorkingDirectory="C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn"
+              StandardErrorVariable="User::varError"
+              WindowStyle="Hidden" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach-Schleifencontainer\get timestamp"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Task &quot;SQL ausführen&quot;"
+          DTS:DTSID="{9A75354D-FFFF-4541-8A70-25629B2BCC7F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="get timestamp"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{7A8FEEBB-9565-478B-9203-1B891AF014EE}"
+              SQLTask:SqlStatementSource="select &#xA;currTimestamp = &#xA;-- Date YYYYMMDD&#xA;convert(varchar(50), GETDATE(), 112)&#xA;+&#xA;-- Time HHMM&#xA;left(replace(convert(varchar(50), GETDATE(), 108), ':', ''), 4)&#xA;&#xA;, &#xA;currPeriod = &#xA;-- Date YYYYMMDD&#xA;convert(varchar(6), GETDATE(), 112)&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="currTimestamp"
+                SQLTask:DtsVariableName="User::varTimeStamp" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach-Schleifencontainer.PrecedenceConstraints[Einschränkung]"
+          DTS:CreationName=""
+          DTS:DTSID="{0CF5C7BE-C845-4B9C-80AA-615C69365F09}"
+          DTS:From="Package\Foreach-Schleifencontainer\get timestamp"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Einschränkung"
+          DTS:To="Package\Foreach-Schleifencontainer\create export-files" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{B7A682AA-D4C1-4351-97BF-671EF5ADF982}"
+          DTS:ObjectName="{B7A682AA-D4C1-4351-97BF-671EF5ADF982}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::varFileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
+<Objects
+  Version="8">
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="198.666666666667,42"
+          Id="Package\Foreach-Schleifencontainer\create export-files"
+          TopLeft="8,110" />
+        <NodeLayout
+          Size="146.666666666667,42"
+          Id="Package\Foreach-Schleifencontainer\get timestamp"
+          TopLeft="8,27" />
+        <EdgeLayout
+          Id="Package\Foreach-Schleifencontainer.PrecedenceConstraints[Einschränkung]"
+          TopLeft="81.5,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="26,41"
+              Start="0,0"
+              End="26,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="22,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22,20.5"
+                    Point2="26,20.5"
+                    Point3="26,24.5" />
+                  <mssgle:LineSegment
+                    End="26,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="212,206.666666666667"
+          Size="212,250"
+          Id="Package\Foreach-Schleifencontainer"
+          TopLeft="483,61" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
